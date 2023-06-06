@@ -1,0 +1,36 @@
+name: auto-metrics
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  auto-metrics:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+
+      - name: Use git-auto-commit-action
+        id: "auto-commit-action"
+        uses: ./
+
+      - name: "changes detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: "echo \"*.svg\""
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: JHKoder
+          message: "Automatic readme update"
+          add: "*.svg"
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
