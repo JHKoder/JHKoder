@@ -52,12 +52,13 @@
     "//": "metrics.run.git                   | Allow to run git",
     "//": "metrics.run.licensed              | Allow to run licensed",
     "//": "metrics.run.user.cmd              | Allow to run ANY command by user (USE WITH CAUTION!)",
-    "//": "metrics.run.puppeteer.scrapping   | Allow to run puppeteer to scrape data",
+    "metrics.run.puppeteer.scrapping": true,
     "//": "metrics.run.puppeteer.user.css    | Allow to run CSS by user during puppeteer render",
     "//": "metrics.run.puppeteer.user.js     | Allow to run JavaScript by user during puppeteer render",
     "//": "metrics.npm.optional.*            | Allow use of specified dependency",
     "//": "________________________________________________________________________",
     "//": "Additional extra features when user is logged with GitHub",
+
     "logged": [
       "metrics.api.github.overuse"
     ]
