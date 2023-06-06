@@ -165,7 +165,7 @@
     },
     "music":{
       "token": "${{ secrets.YOUTUBE_MUSIC_TOKEN }}",
-      "enabled": true,                  "//": "Enable music plugin"
+      "enabled": false,                  "//": "Enable music plugin"
     },
     "posts":{
       "enabled": false,                 "//": "Enable posts plugin"
