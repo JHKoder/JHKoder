@@ -1,8 +1,8 @@
 name: git-auto-commit
 
 on:
-  schedule:
-    - cron: '0 12 * * *'
+  schedule: [{cron: "0 * * * *"}]
+  workflow_dispatch:
 
 jobs:
   commit:
