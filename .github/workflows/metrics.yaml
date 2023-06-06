@@ -37,7 +37,6 @@ jobs:
           plugin_music_provider: youtube
           plugin_music_time_range: short
           plugin_music_top_type: tracks
-          plugin_music_user: Jeonghun kang
 
 
           plugin_languages: yes
