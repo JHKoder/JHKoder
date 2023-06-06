@@ -68,7 +68,7 @@
       "enabled": false,                 "//": "Enable isocalendar plugin"
     },
     "languages":{
-      "enabled": false,                 "//": "Enable languages plugin"
+      "enabled": true,                 "//": "Enable languages plugin"
     },
     "stargazers":{
       "worldmap.token": null,           "//": "Stargazers worldmap token",
@@ -165,7 +165,7 @@
     },
     "music":{
       "token": "${{ secrets.YOUTUBE_MUSIC_TOKEN }}",
-      "enabled": false,                  "//": "Enable music plugin"
+      "enabled": true,                  "//": "Enable music plugin"
     },
     "posts":{
       "enabled": false,                 "//": "Enable posts plugin"
