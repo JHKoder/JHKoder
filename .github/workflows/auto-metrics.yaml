@@ -2,21 +2,30 @@ name: git-auto-commit
 
 on:
   schedule:
-    - cron: "0 4 * * *"
-  workflow_dispatch:
+    - cron: '0 12 * * *'
 
 jobs:
-  git-auto-commit:
+  commit:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v4
-        with:
-          author_name: JHKoder
-          author_email: jeonghun.kang@gmail.com
-          message: "Auto updating my readme"
-          add: "*.svg"
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check if file modified today
+        id: check-file
+        run: |
+            today=$(date +'%Y-%m-%d')
+            if [[ $(git log -1 --format="%cd" --date="short" -- /github-metrics.svg) == $today ]]; then
+              echo "::set-output name=modified::true"
+            else
+              echo "::set-output name=modified::false"
+            fi
+
+      - name: Commit changes with new author
+        if: steps.check-file.outputs.modified == 'true'
+        run: |
+          git config user.name "JHKoder"
+          git config user.email "jeonghun.kang@gmail.com"
+          git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang@gmail.com>"
+          git push --token ${{ secrets.METRICS_TOKEN }}
