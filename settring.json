@@ -164,8 +164,8 @@
       "enabled": false,                 "//": "Enable aniList plugin"
     },
     "music":{
-      "token": "Music provider token",
-      "enabled": true,                 "//": "Enable music plugin"
+      "token": "${{ secrets.YOUTUBE_MUSIC_TOKEN }}",
+      "enabled": false,                 "//": "Enable music plugin"
     },
     "posts":{
       "enabled": false,                 "//": "Enable posts plugin"
