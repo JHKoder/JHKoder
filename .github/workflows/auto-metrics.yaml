@@ -38,8 +38,7 @@ jobs:
           cp github-metrics.svg temp_github-metrics.svg
           git rm github-metrics.svg
           mv temp_github-metrics.svg github-metrics.svg
-          rm -f temp_github-metrics.svg
-          git add github-metrics.svg
+          git add *.svg
           git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang.dev@gmail.com>"
           git push --token ${{ secrets.METRICS_TOKEN }}
           rm -f github-metrics.svg
