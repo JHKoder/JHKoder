@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 16
 
+
       - name: Check if file modified today
         id: check-file
         run: |
@@ -27,7 +28,15 @@ jobs:
             echo "modified=false" >> $GITHUB_ENV
           fi
 
+      - name: Remove existing file
+        if: env.modified == 'true'
+        run: |
+          rm -f github-metrics.svg
+          cp /path/to/new/github-metrics.svg github-metrics.svg
+          git add github-metrics.svg
+
       - name: Commit changes with new author
+        if: env.modified == 'true'
         uses: EndBug/add-and-commit@v4
         with:
           author_name: "JHKoder"
@@ -36,9 +45,3 @@ jobs:
           add: "*.svg"
         env:
           GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
-#        run: |
-#          git config user.name "JHKoder"
-#          git config user.email "jeonghun.kang@gmail.com"
-#          git add ./path/to/github-metrics.svg
-#          git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang@gmail.com>"
-#          git push --token ${{ secrets.METRICS_TOKEN }}
