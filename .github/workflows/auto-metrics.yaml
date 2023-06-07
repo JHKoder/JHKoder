@@ -42,12 +42,9 @@ jobs:
           git checkout origin/main -- github-metrics.svg
           cp github-metrics.svg temp_github-metrics.svg
           git rm github-metrics.svg
-          
-          delete_commit_hash=$(git rev-parse HEAD)
           git commit -m "Auto updating... (delete)" --author="${{ env.GIT_NAME }} <${{ env.GIT_EMAIL }}>"
           git pull origin main
           mv temp_github-metrics.svg github-metrics.svg
           git add github-metrics.svg
           git commit -m "Auto updating... (add)" --author="${{ env.GIT_NAME }} <${{ env.GIT_EMAIL }}>"
-          git cherry-pick $delete_commit_hash
           git push origin HEAD
