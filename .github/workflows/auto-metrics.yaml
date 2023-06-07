@@ -1,7 +1,7 @@
 name: git-auto-commit
 
 on:
-  schedule: [{cron: "0 */4 * * *"}]
+  schedule: [{cron: "0 23 * * *"}]
   workflow_dispatch:
 
 
@@ -33,7 +33,7 @@ jobs:
             echo "modified=false" >> $GITHUB_ENV
           fi
 
-      - name: Remove existing file
+      - name: git auto update
         if: env.modified == 'true'
         run: |
           git config user.name ${{ env.GIT_NAME }}
@@ -42,24 +42,12 @@ jobs:
           git checkout origin/main -- github-metrics.svg
           cp github-metrics.svg temp_github-metrics.svg
           git rm github-metrics.svg
+          
+          delete_commit_hash=$(git rev-parse HEAD)
           git commit -m "Auto updating... (delete)" --author="${{ env.GIT_NAME }} <${{ env.GIT_EMAIL }}>"
           git pull origin main
           mv temp_github-metrics.svg github-metrics.svg
           git add github-metrics.svg
           git commit -m "Auto updating... (add)" --author="${{ env.GIT_NAME }} <${{ env.GIT_EMAIL }}>"
+          git cherry-pick $delete_commit_hash
           git push origin HEAD
-
-#        run: |
-#          git config user.name "JHKoder"
-#          git config user.email "jeonghun.kang.dev@gmail.com"
-#          git pull origin main
-#          git checkout origin/main -- github-metrics.svg
-#          cp github-metrics.svg temp_github-metrics.svg
-#          git rm github-metrics.svg
-#          git commit -m "Auto updating... (delete)" --author="JHKoder <jeonghun.kang.dev@gmail.com>"
-#          git push origin HEAD
-#          git pull origin main
-#          mv temp_github-metrics.svg github-metrics.svg
-#          git add github-metrics.svg
-#          git commit -m "Auto updating... (add)" --author="JHKoder <jeonghun.kang.dev@gmail.com>"
-#          git push origin HEAD
