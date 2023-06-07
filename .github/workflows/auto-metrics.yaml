@@ -31,8 +31,8 @@ jobs:
       - name: Remove existing file
         if: env.modified == 'true'
         run: |
-          rm -f github-metrics.svg
-          cp path/to/github-metrics.svg github-metrics.svg
+          cp github-metrics.svg temp_github-metrics.svg
+          mv temp_github-metrics.svg github-metrics.svg
           git add github-metrics.svg
 
       - name: Commit changes with new author
