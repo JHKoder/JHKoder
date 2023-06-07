@@ -21,7 +21,7 @@ jobs:
         id: check-file
         run: |
           today=$(date +'%Y-%m-%d')
-          if [[ $(git log -1 --format="%cd" --date="short" -- ./path/to/github-metrics.svg) == $today ]]; then
+          if [[ $(git log -1 --format="%cd" --date="short" --  github-metrics.svg) == $today ]]; then
             echo "modified=true" >> $GITHUB_ENV
           else
             echo "modified=false" >> $GITHUB_ENV
