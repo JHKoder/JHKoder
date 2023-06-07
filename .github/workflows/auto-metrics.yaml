@@ -39,14 +39,17 @@ jobs:
             mv temp_github-metrics.svg github-metrics.svg
             rm -f temp_github-metrics.svg
             git add github-metrics.svg
+            git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang@gmail.com>"
+            git push --token ${{ secrets.METRICS_TOKEN }}
+            rm -f github-metrics.svg
 
-      - name: Commit changes with new author
-        if: env.modified == 'true'
-        uses: EndBug/add-and-commit@v4
-        with:
-          author_name: "JHKoder"
-          author_email: "jeonghun.kang@gmail.com"
-          message: "Auto updating my readme"
-          add: "*.svg"
-        env:
-          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+#      - name: Commit changes with new author
+#        if: env.modified == 'true'
+#        uses: EndBug/add-and-commit@v4
+#        with:
+#          author_name: "JHKoder"
+#          author_email: "jeonghun.kang@gmail.com"
+#          message: "Auto updating my readme"
+#          add: "*.svg"
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
