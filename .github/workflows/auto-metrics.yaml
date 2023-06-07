@@ -28,7 +28,6 @@ jobs:
           fi
 
       - name: Commit changes with new author
-        if: steps.check-file.outputs.modified == 'true'
         run: |
           git config user.name "JHKoder"
           git config user.email "jeonghun.kang@gmail.com"
