@@ -24,11 +24,11 @@ jobs:
         id: check-file
         run: |
             today=$(date +'%Y-%m-%d')
-            if [[ $(git log -1 --format="%cd" --date="short" -- ./path/to/github-metrics.svg) == $today ]]; then
-              echo "::set-output name=modified::true"
-            else
-              echo "::set-output name=modified::false"
-            fi
+          if [[ $(git log -1 --format="%cd" --date="short" -- ./path/to/github-metrics.svg) == $today ]]; then
+          echo "modified=true" >> $GITHUB_ENV
+          else
+          echo "modified=false" >> $GITHUB_ENV
+          fi
 
       - name: Commit changes with new author
         if: steps.check-file.outputs.modified == 'true'
