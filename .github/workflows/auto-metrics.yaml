@@ -1,7 +1,7 @@
 name: git-auto-commit
 
 on:
-  schedule: [{cron: "0 12 * * *"}]
+  schedule: [{cron: "0 */4 * * *"}]
   workflow_dispatch:
 
 
@@ -42,7 +42,8 @@ jobs:
           git checkout origin/main -- github-metrics.svg
           cp github-metrics.svg temp_github-metrics.svg
           git rm github-metrics.svg
-          git push origin HEAD
+          git commit -m "Auto updating... (delete)" --author="${{ env.GIT_NAME }} <${{ env.GIT_EMAIL }}>"
+          git pull origin main
           mv temp_github-metrics.svg github-metrics.svg
           git add github-metrics.svg
           git commit -m "Auto updating... (add)" --author="${{ env.GIT_NAME }} <${{ env.GIT_EMAIL }}>"
