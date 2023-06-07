@@ -31,9 +31,14 @@ jobs:
       - name: Remove existing file
         if: env.modified == 'true'
         run: |
-          cp github-metrics.svg temp_github-metrics.svg
-          mv temp_github-metrics.svg github-metrics.svg
-          git add github-metrics.svg
+            git config user.name "JHKoder"
+            git config user.email "jeonghun.kang@gmail.com"
+            git checkout origin/main -- github-metrics.svg
+            cp github-metrics.svg temp_github-metrics.svg
+            git rm github-metrics.svg
+            mv temp_github-metrics.svg github-metrics.svg
+            rm -f temp_github-metrics.svg
+            git add github-metrics.svg
 
       - name: Commit changes with new author
         if: env.modified == 'true'
