@@ -32,7 +32,7 @@ jobs:
         if: env.modified == 'true'
         run: |
           rm -f github-metrics.svg
-          cp github-metrics.svg /path/to/new/github-metrics.svg
+          cp path/to/github-metrics.svg github-metrics.svg
           git add github-metrics.svg
 
       - name: Commit changes with new author
