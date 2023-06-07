@@ -34,14 +34,18 @@ jobs:
           git config user.name "JHKoder"
           git config user.email "jeonghun.kang.dev@gmail.com"
           git pull
+          
           git checkout origin/main -- github-metrics.svg
           cp github-metrics.svg temp_github-metrics.svg
           git rm github-metrics.svg
-          mv temp_github-metrics.svg github-metrics.svg
-          git add *.svg
-          git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang.dev@gmail.com>"
+          git commit -m "Auto updating... (delete) " --author="JHKoder <jeonghun.kang.dev@gmail.com>"
           git push --token ${{ secrets.METRICS_TOKEN }}
-          rm -f github-metrics.svg
+          
+          git pull
+          mv temp_github-metrics.svg github-metrics.svg
+          git add github-metrics.svg
+          git commit -m "Auto updating... (add) " --author="JHKoder <jeonghun.kang.dev@gmail.com>"
+          git push --token ${{ secrets.METRICS_TOKEN }}
 
 #      - name: Commit changes with new author
 #        if: env.modified == 'true'
