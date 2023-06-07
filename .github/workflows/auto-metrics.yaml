@@ -17,17 +17,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Check if file modified today
         id: check-file
         run: |
-            today=$(date +'%Y-%m-%d')
+          today=$(date +'%Y-%m-%d')
           if [[ $(git log -1 --format="%cd" --date="short" -- ./path/to/github-metrics.svg) == $today ]]; then
-          echo "modified=true" >> $GITHUB_ENV
+            echo "modified=true" >> $GITHUB_ENV
           else
-          echo "modified=false" >> $GITHUB_ENV
+            echo "modified=false" >> $GITHUB_ENV
           fi
 
       - name: Commit changes with new author
