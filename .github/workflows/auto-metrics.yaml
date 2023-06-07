@@ -28,9 +28,17 @@ jobs:
           fi
 
       - name: Commit changes with new author
-        run: |
-          git config user.name "JHKoder"
-          git config user.email "jeonghun.kang@gmail.com"
-          git add ./path/to/github-metrics.svg
-          git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang@gmail.com>"
-          git push --token ${{ secrets.METRICS_TOKEN }}
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: "JHKoder"
+          author_email: "jeonghun.kang@gmail.com"
+          message: "Auto updating my readme"
+          add: "*.svg"
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+#        run: |
+#          git config user.name "JHKoder"
+#          git config user.email "jeonghun.kang@gmail.com"
+#          git add ./path/to/github-metrics.svg
+#          git commit -m "Auto updating my readme" --author="JHKoder <jeonghun.kang@gmail.com>"
+#          git push --token ${{ secrets.METRICS_TOKEN }}
