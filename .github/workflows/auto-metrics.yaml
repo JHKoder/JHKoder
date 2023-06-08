@@ -34,7 +34,7 @@ jobs:
           fi
 
       - name: git auto update
-        if: env.modified == 'true'
+#        if: env.modified == 'true'
         run: |
           git config user.name ${{ env.GIT_NAME }}
           git config user.email ${{ env.GIT_EMAIL }}
