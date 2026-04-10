@@ -1,8 +1,9 @@
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FoiNeh%2Fhit-counter&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-![JAVA](https://img.shields.io/badge/java-red?logo=OpenJDK)
+# 👋 강정훈 | Spring Boot 백엔드 개발자
 
+### 🛠️ 기술 스택
+
+**Back-end**  
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 
 ![Metrics](https://github.com/JHKoder/JHKoder/blob/main/github-metrics.svg)
-
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=JHKoder&show_icons=true&theme=react)
-
